@@ -1,4 +1,12 @@
-james=[]
+def open_fies (filename):
+    try:
+        with open(filename) as file:
+            data= file.readline()
+            return (data.strip().split(","))
+    except IOError as e:
+        print("IOERROR")
+        return (None)
+'''
 with open ("james.txt") as jamesFile:
     lineja=jamesFile.readline()
 james=lineja.strip().split(",")
@@ -11,6 +19,12 @@ mikey=linem.strip().split(",")
 with open("sarah.txt") as sarahFile:
     lines=sarahFile.readline()
 sarah=lines.strip().split(",")
+'''
+james=open_fies("james.txt")
+julie=open_fies("julie.txt")
+mikey=open_fies("mikey.txt")
+sarah=open_fies("sarah.txt")
+'''
 print(james)
 print(julie)
 print(mikey)
@@ -20,6 +34,7 @@ print(sorted(james))
 print(sorted(julie))
 print(sorted(mikey))
 print(sorted(sarah))
+'''
 
 def sanitize (time):
     if '-' in time:
@@ -47,7 +62,20 @@ for i in sarah:
 '''
 
 print("SORT II")
-print(sorted([sanitize(t) for t in james]))
+james=sorted([sanitize(t) for t in james])
+print(james)
 print(sorted([sanitize(t) for t in julie]))
 print(sorted([sanitize(t) for t in mikey]))
 print(sorted([sanitize(t) for t in sarah]))
+
+
+unique_james=[]
+
+for i in james:
+ if (i not in unique_james):
+     unique_james.append(i)
+print(unique_james[0:3])
+
+#print(sorted(set(james)[0:3]))
+
+
