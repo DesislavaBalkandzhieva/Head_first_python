@@ -6,6 +6,7 @@ def open_fies (filename):
     except IOError as e:
         print("IOERROR")
         return (None)
+
 '''
 with open ("james.txt") as jamesFile:
     lineja=jamesFile.readline()
