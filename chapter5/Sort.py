@@ -70,6 +70,7 @@ print(sorted([sanitize(t) for t in sarah]))
 
 
 unique_james=[]
+
 for i in james:
  if (i not in unique_james):
      unique_james.append(i)
