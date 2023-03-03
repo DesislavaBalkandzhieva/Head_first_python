@@ -7,6 +7,11 @@ class Athlete:
     def top3(self):
         return (sorted(set([sanitize(t) for t in self.times]))[0:3])
 
+    def add_time (self, time):
+        self.times.append(time)
+
+    def add_times (self, list_times):
+        self.times.append(list_times)
 def open_fies (filename):
     try:
         with open(filename) as file:
@@ -16,6 +21,8 @@ def open_fies (filename):
     except IOError as e:
         print("IOERROR")
         return (None)
+
+
 
 def sanitize (time):
     if '-' in time:
@@ -27,7 +34,7 @@ def sanitize (time):
     (mins, secs)= time.split(splitter)
     return (mins+'.'+secs)
 
-sarah=open_fies("sarah2.txt")
+#sarah=open_fies("sarah2.txt")
 '''
 (sarah_name, sarah_dob)= sarah.pop(0), sarah.pop(0)
 print(sarah_name+ str(sorted(set([sanitize(t) for t in sarah]))[0:3]))
