@@ -1,3 +1,4 @@
+'''
 class Athlete:
     def __init__(self, name, dob=None, times=[]):
         self.name=name
@@ -12,12 +13,15 @@ class Athlete:
 
     def add_times (self, list_times):
         self.times.append(list_times)
+
+'''
+
 def open_fies (filename):
     try:
         with open(filename) as file:
             data= file.readline()
             temp= (data.strip().split(","))
-            return (Athlete(temp.pop(0), temp.pop(0), temp))
+            return (AthleteList(temp.pop(0), temp.pop(0), temp))
     except IOError as e:
         print("IOERROR")
         return (None)
@@ -33,6 +37,15 @@ def sanitize (time):
         return (time)
     (mins, secs)= time.split(splitter)
     return (mins+'.'+secs)
+#built in list class
+class AthleteList(list):
+    def __init__(self, name, dob=None, times=[]):
+        list.__init__([])
+        self.name=name
+        self.dob=dob
+        self.extend(times)
+    def top3(self):
+        return (sorted(set([sanitize(t) for t in self]))[0:3])
 
 #sarah=open_fies("sarah2.txt")
 '''
@@ -48,3 +61,8 @@ print(sarah_data['name']+ str(sorted(set([sanitize(t) for t in sarah]))[0:3]))
 '''
 james= open_fies("james2.txt")
 print(james.name+str(james.top3()))
+
+vera=AthleteList('Vera Vi')
+vera.append('1.23')
+vera.extend(['2.33','4.01', '3.24'])
+print(vera.top3())
